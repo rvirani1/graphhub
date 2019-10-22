@@ -1,24 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header';
+import OwnerRepoInput from './components/OwnerRepoInput';
+import RestRepo from './components/repo/RestRepo';
+import GraphQLRepo from './components/repo/GraphQLRepo';
 
 function App() {
+  const [owner, setOwner] = React.useState('ni3t');
+  const [repo, setRepo] = React.useState('graphhub');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container pt-4">
+      <div className="box">
+        <div className="flex flex-row justify-between">
+          <Header />
+          <OwnerRepoInput
+            owner={owner}
+            setOwner={setOwner}
+            repo={repo}
+            setRepo={setRepo}
+          ></OwnerRepoInput>
+        </div>
+      </div>
+      <div class="columns">
+        <RestRepo></RestRepo>
+        <GraphQLRepo></GraphQLRepo>
+      </div>
     </div>
   );
 }
